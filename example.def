@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%setup
+    echo "print(f'Hello world')" > /example.py
+    
+
+%files
+    /example.py /code/example.py
+
+%environment
+
+%post
+    apt-get update
+    apt-get install -y python3
+
+%runscript
+    python3 /code/example.py
+
+%startscript
+
+%test
+    
+
+%labels
+
+%help
+    Demo container.
